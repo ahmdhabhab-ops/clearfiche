@@ -1,0 +1,134 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-border: var(--ink-border);
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* Paper-white canvas, deep navy ink, restrained teal signal */
+  --background: oklch(0.985 0.004 250);
+  --foreground: oklch(0.21 0.035 258);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.21 0.035 258);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.21 0.035 258);
+  --primary: oklch(0.29 0.062 254);
+  --primary-foreground: oklch(0.985 0.004 250);
+  --secondary: oklch(0.955 0.008 250);
+  --secondary-foreground: oklch(0.29 0.062 254);
+  --muted: oklch(0.958 0.006 250);
+  --muted-foreground: oklch(0.52 0.022 256);
+  --accent: oklch(0.62 0.095 195);
+  --accent-foreground: oklch(0.99 0.004 250);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0.003 248);
+  --border: oklch(0.905 0.008 252);
+  --input: oklch(0.9 0.008 252);
+  --ring: oklch(0.62 0.095 195);
+
+  /* Dark surface tokens used for inverted bands */
+  --ink: oklch(0.205 0.036 258);
+  --ink-foreground: oklch(0.97 0.006 250);
+  --ink-muted: oklch(0.72 0.018 254);
+  --ink-border: oklch(1 0 0 / 12%);
+
+  --gradient-hero: radial-gradient(
+      120% 90% at 12% 0%,
+      color-mix(in oklab, var(--accent) 16%, transparent),
+      transparent 60%
+    ),
+    linear-gradient(168deg, oklch(0.99 0.004 250) 0%, oklch(0.955 0.01 244) 100%);
+  --gradient-ink: linear-gradient(155deg, oklch(0.235 0.04 258) 0%, oklch(0.175 0.032 260) 100%);
+  --gradient-rule: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, var(--accent) 55%, transparent),
+    transparent
+  );
+  --shadow-panel: 0 1px 2px oklch(0.21 0.035 258 / 0.05), 0 24px 60px -28px oklch(0.21 0.035 258 / 0.28);
+  --shadow-lift: 0 2px 4px oklch(0.21 0.035 258 / 0.04), 0 32px 70px -30px oklch(0.21 0.035 258 / 0.38);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+  }
+}
+
+@utility surface-hero {
+  background-image: var(--gradient-hero);
+}
+
+@utility surface-ink {
+  background-image: var(--gradient-ink);
+  color: var(--color-ink-foreground);
+}
+
+@utility rule-accent {
+  background-image: var(--gradient-rule);
+}
+
+@utility panel {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-panel);
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
